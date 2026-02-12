@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .section01 {
+            height: 100vh;
+            position: relative;
+            background-color: rgb(170, 238, 238);
+        }
+
+        .section01 .box01 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .section01 .box02 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .section01 .box03 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .section01 .box04 {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        /* .bg-cover{
+            background-position: center center;
+            background-size: cover;
+        } */
+        .section01 .userimg {
+            background-color: rgb(251, 252, 231);
+            position: absolute;
+            inset: 40px;
+            background-image: url(images/01.jpg);
+            background-size: cover;
+            background-position: 0 0;
+
+            /* top: 30px;
+            bottom: 30px;
+            right: 30px;
+            left: 30px; */
+            /* inset: 10px 20px 30px 40px; */
+
+        }
+
+        .section01 .usertext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background-color: rgba(38, 56, 56, 0.8);
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 2px 2px #326f5c;
+            color: #d0f0e6;
+
+        }
+
+        .section01 .usertext h1 {
+            font-size: 48px;
+            margin-bottom: 0;
+
+        }
+
+        .section01 .usertext p {
+            font-size: 24px;
+            text-align: left;
+
+        }
+
+        .section02 {
+            position: relative;
+            background-color: rgb(236, 209, 255);
+            height: 400px;
+            
+        }
+
+        .section02 .box01 {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: azure;
+            border-radius: 50%;
+            left: 10%;
+            top: 75px;
+            text-align: center;
+            line-height: 250px;
+            background-image: url(images/01.jpg);
+            background-size: cover;
+            border: 4px solid white;
+
+        }
+
+        .section02 .box01 a {
+            text-decoration: none;
+            color: #50196b;
+            font-size: 30px;
+
+
+        }
+
+        .section02 .box02 {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: azure;
+            border-radius: 50%;
+            left: 40%;
+            top: 75px;
+            text-align: center;
+            line-height: 250px;
+            background-image: url(images/01.jpg);
+            background-size: cover;
+             border: 4px solid white;
+        }
+
+        .section02 .box02 a {
+            text-decoration: none;
+            color: #50196b;
+            font-size: 30px;
+        }
+
+        .section02 .box03 {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: azure;
+            border-radius: 50%;
+            left: 70%;
+            top: 75px;
+            text-align: center;
+            line-height: 250px;
+            background-image: url(images/01.jpg);
+            background-size: cover;
+             border: 4px solid white;
+        }
+
+        .section02 .box03 a {
+            text-decoration: none;
+            color: #50196b;
+            font-size: 30px;
+
+        }
+
+        @media screen and (max-width:1024px) {
+    .section02 {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;       /* 空間不夠就自動換行 */
+        justify-content: center; /* 居中並排 */
+        align-items: center;
+        gap: 20px;             /* 圓圈之間的間距 */
+        padding: 60px 20px;    /* 上下留白，讓畫面不擁擠 */
+    }
+
+    .section02 [class^="box"] {
+        position: static;      /* 解除絕對定位，讓 Flexbox 生效 */
+        width: 250px;          /* 稍微縮小圓圈，適合手機並排 */
+        height: 250px;
+        line-height: 160px;
+        border: 4px solid white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 增加彈性體感 */
+    }
+
+    /* 手機觸控或點擊時的「按壓」效果 */
+    .section02 [class^="box"]:active {
+        transform: scale(0.9); /* 縮小 10%，模擬按壓感 */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        filter: brightness(0.9); /* 稍微變暗，增加真實感 */
+    }
+
+    .section02 [class^="box"] a {
+        font-size: 22px;
+        display: block; /* 讓整個圓圈點了都有反應 */
+        width: 100%;
+        height: 100%;
+    }
+}
+
+        @media screen and (max-width: 425px) {
+            .section02 {
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                /* 自動換行 */
+                justify-content: center;
+                /* 水平居中 */
+                gap: 20px;
+                padding: 40px 10px;
+            }
+
+            .section02 [class^="box"] {
+                /* 選取 box01, box02, box03 */
+                position: static;
+                width: 250px;
+                /* 縮小寬度以便並排 */
+                height: 250px;
+                line-height: 250px;
+            }
+
+            .section02 [class^="box"] a {
+                font-size: 20px;
+                /* 字體也隨之縮小 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section01">
+        <div class="box01"></div>
+        <div class="box02"></div>
+        <div class="box03"></div>
+        <div class="box04"></div>
+        <div class="userimg"></div>
+        <div class="usertext">
+            <h1>XXX</h1>
+            <hr>
+            <h2>有意學校人物出口女。</h2>
+            <p>意識一個物理之中半年簡單網易網頁，所屬相機等級前來，以來女。</p>
+        </div>
+
+    </div>
+    <div class="section02">
+        <div class="box01">
+            <a href="../20260129-1.html" target="_blank">作品一</a>
+        </div>
+        <div class="box02">
+            <a href="../20260129-1.html" target="_blank">作品二</a>
+        </div>
+        <div class="box03">
+            <a href="../20260129-1.html" target="_blank">作品三</a>
+        </div>
+    </div>
+</body>
+
+</html>

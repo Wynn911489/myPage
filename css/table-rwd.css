@@ -1,0 +1,47 @@
+ @media screen and (max-width:768px) {
+            .title{
+                font-size: 55px;
+                text-shadow: 3px 3px 3px var(--mycolor11);
+            }
+
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                border: 2px solid var(--mycolor11);
+                margin-top: 20px;
+                background-color:var(--mycolor09);
+
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                border: 2px solid var(--mycolor11);
+                overflow: hidden;
+
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th)":";
+                color: var(--mycolor12);
+                font-size: 20px;
+                font-weight: 900;
+                display: block;
+                float: left;
+                width: 30%;
+                text-align: right;
+                padding-right: 1em;
+                /* 1em 1字元 */
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 70%;
+
+                /* block屬性會佔100% 沒加寬度會自動跳到下一行
+            設定了W70%才會往上 */
+            }
+        }
