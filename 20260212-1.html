@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6 - 地方美食列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <style>
+
+
+
+
+    </style>
+
+<body>
+    <div class="title-02 text-center">地方美食列表</div>
+    <div class="container">
+        <div class="row gy-4 " id="mybody">
+            <div class="col-md-6 col-lg-4 col-xl-3 ">
+                <div class="roller-l card ">
+                    <div class="roller-l_box">
+                        <button class="btn btn-primary">查看更多</button>
+                    </div>
+                    <div style="background-image: url(images/04.jpg);
+                        height:160px;background-position: center center;
+                        background-size: cover;"></div>
+                    <div class="h3 text-center fw-900">餐廳名稱</div>
+                    <div class="h5">電話:XXXX</div>
+                    <div class="h5">地址:xxxx</div>
+                    <p>看見感覺到女子什麼擴大做到感到力道，是從製品版本之間消失點頭上次年輕某些不敢為什麼電信，這一交換民族，瞬間增強不夠形成資產太陽其中管理系統股權用於，降價雙方著名簡歷或是門口娛樂，自行孩子簡介出來收藏本頁空氣一些，背景詳細訊息出現基於負責，一番婦女現場，幾。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/json/ODwsvTravelFood.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("連線錯誤!!");
+
+                }
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+            $("#mybody").empty();
+            data.forEach(function (item) {
+             
+            
+            let img = item.PicURL ? item.PicURL : "images/04.jpg";
+            let tel = item.Tel ? item.Tel :"未提供"
+            let hoeswords = item.HostWords ? item.HostWords.subsring(0,30):"未提供簡介";
+
+            // url('${img}') 加了'' 檔名有特殊符號的圖片也能被顯示;
+
+
+               let strHTML = `  <div class="col-md-6 col-lg-4 col-xl-3 ">
+                <div class="roller-l ">
+                    <div class="roller-l_box ">
+                        <button class="btn btn-primary ">查看更多</button>
+                    </div>
+                    <div style="background-image: url('${img}');
+                        height:160px;background-position: center center;
+                        background-size: cover;"></div>
+                    <div class="h3 text-center fw-900">${item.Name}</div>
+                    <div class="h5">電話:${tel}</div>
+                    <div class="h5">地址:${item.City+item.Town+item.Address}</div>
+                    <p>${hoeswords}</p>
+                </div>
+            </div>`;
+             $("#mybody").append(strHTML);
+            })
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

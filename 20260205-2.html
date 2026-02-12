@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouBike</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .table-rwd thead th {
+            white-space: nowrap;
+        }
+
+        .table-rwd tbody tr td:first-child {
+        white-space: nowrap;
+    }
+
+        @media screen and (max-width:768px) {
+
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                border: 2px solid var(--mycolor12);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                border: 2px solid var(--mycolor12);
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th)":";
+            }
+
+
+        }
+    </style>
+</head>
+
+
+<div class=" title-02">YouBike</div>
+<div class="container">
+    <table class="table table-rwd table-striped">
+        <thead class="table-success">
+            <tr> 
+                <th>編號</th>
+                <th>地址</th>
+                <th>站名</th>
+                <th>可借用數</th>
+                <th>待歸還數</th>
+                <th>更新時間</th>
+            </tr>
+        </thead>
+        <tbody id="mybody">
+            <tr>
+                <td data-th="編號"><span>XX</span></td>
+                <td data-th="地址"><span>XX</span></td>
+                <td data-th="站名"><span>XX</span></td>
+                <td data-th="可借用數"><span>XX</span></td>
+                <td data-th="待歸還數"><span>XX</span></td>
+                <td data-th="更新時間"><span>XX</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="js/json/youbike_immediate.json"></script>
+
+    <script>
+        //主程式
+        $(function () {
+            $.ajax({
+                type:"GET",
+                url: "js/json/youbike_immediate.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("路徑錯誤");
+                }
+
+            });
+            //副程式
+            function showdata(data) {
+                console.log(data);
+                //  跑資料前  把第一筆空白的清空
+                $("#mybody").empty();
+
+                    // # 呼叫 ID  
+                data.forEach(function (item) {
+
+
+                    let strHTML = ` <tr>
+                                    <td data-th="編號"><span>${item.sno}</span></td>
+                                    <td data-th="地址"><span>${item.ar}</span></td>
+                                    <td data-th="站名"><span>${item.sna}</span></td>
+                                    <td data-th="可借用數"><span>${item.available_rent_bikes}</span></td>
+                                    <td data-th="待歸還數"><span>${item.available_return_bikes}</span></td>
+                                    <td data-th="更新時間"><span>${item.updateTime}</span></td>
+
+                                 </tr>` ;
+                    $("#mybody").append(strHTML);
+                })
+            }
+
+
+
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
